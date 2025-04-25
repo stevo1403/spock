@@ -79,6 +79,99 @@ class AppTheme {
       );
 
   // Theme Data
+  static final ThemeData lightTheme = ThemeData(
+    useMaterial3: true,
+    brightness: Brightness.light,
+    primaryColor: primaryColor,
+    scaffoldBackgroundColor: lightBackgroundColor,
+    cardColor: lightCardColor,
+    colorScheme: const ColorScheme.light(
+      primary: primaryColor,
+      secondary: accentColor,
+      surface: lightCardColor,
+      error: errorColor,
+    ),
+    appBarTheme: AppBarTheme(
+      backgroundColor: lightBackgroundColor,
+      elevation: 0,
+      centerTitle: true,
+      titleTextStyle: lightTitleStyle,
+      iconTheme: const IconThemeData(color: lightTextColor),
+    ),
+    textTheme: TextTheme(
+      displayLarge: lightHeadingStyle,
+      displayMedium: lightTitleStyle,
+      bodyLarge: lightSubtitleStyle,
+      bodyMedium: lightBodyStyle,
+      bodySmall: lightCaptionStyle,
+    ),
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: primaryColor,
+        foregroundColor: textColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: primaryColor,
+        side: const BorderSide(color: primaryColor),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+      ),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        foregroundColor: primaryColor,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: lightCardColor,
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide.none,
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: BorderSide.none,
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(12),
+        borderSide: const BorderSide(color: primaryColor),
+      ),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+      hintStyle: lightCaptionStyle,
+    ),
+    cardTheme: CardTheme(
+      color: lightCardColor,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16),
+      ),
+    ),
+    dividerTheme: const DividerThemeData(
+      color: lightBorderColor,
+      thickness: 1,
+    ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: lightBackgroundColor,
+      selectedItemColor: primaryColor,
+      unselectedItemColor: lightSubtextColor,
+      type: BottomNavigationBarType.fixed,
+      showSelectedLabels: true,
+      showUnselectedLabels: true,
+    ),
+  );
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
