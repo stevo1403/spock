@@ -78,7 +78,7 @@ class _HomePage extends State<HomePage> {
                                         getAccountBasedOnMnemonic(_inputPhraseController.text,0);
                                         setState(() {
                                         });
-                                      } catch (e, s) {
+                                      } catch (e) {
                                         log("Error : generate wallet : $e");
                                       }
                                     },

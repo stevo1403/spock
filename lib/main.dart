@@ -1,11 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 import 'dart:async';
-import 'dart:developer';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:pure_wallet_2/pages/hompage.dart';
 import 'package:pure_wallet_2/static/init_client.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'static/scaled_size_custom.dart';
 
 Future<void> main() async {

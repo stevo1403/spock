@@ -1,4 +1,6 @@
 {
   "java.configuration.updateBuildConfiguration": "interactive",
-  "dart.flutterSdkPath": ".fvm/versions/3.7.12"
+  "dart.flutterSdkPath": ".fvm/versions/3.7.12",
+  "IDX.aI.enableInlineCompletion": true,
+  "IDX.aI.enableCodebaseIndexing": true
 }

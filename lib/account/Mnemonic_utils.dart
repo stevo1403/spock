@@ -2,9 +2,6 @@ import 'dart:typed_data';
 
 import 'package:mnemonic/mnemonic.dart' as ibip39;
 import 'package:wallet/wallet.dart' as wallet;
-import 'package:crypto/crypto.dart';
-import 'package:bs58/bs58.dart';
-import 'package:hex/hex.dart';
 
 class MnemonicUtils {
   // Entropy MUST BE transformed to Mnemonic.
