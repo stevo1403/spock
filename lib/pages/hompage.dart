@@ -14,7 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePage extends State<HomePage> {
-
+/home/user/web3-wallet-connect-app-es5xojj/lib/screens
   final TextEditingController _inputPhraseController = TextEditingController();
 
   @override
