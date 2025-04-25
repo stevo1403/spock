@@ -168,12 +168,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        const Text(
           'Connect Wallet',
           style: AppTheme.headingStyle,
         ),
         const SizedBox(height: 8),
-        Text(
+        const Text(
           'Connect your wallet to access decentralized applications',
           style: AppTheme.captionStyle,
         ),
