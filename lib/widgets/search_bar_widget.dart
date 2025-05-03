@@ -7,7 +7,7 @@ class SearchBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     return Row(
       children: [
         Expanded(
@@ -20,21 +20,21 @@ class SearchBarWidget extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search Decentralized Apps',
-                hintStyle: theme.brightness == Brightness.dark 
-                    ? AppTheme.captionStyle 
+                hintStyle: theme.brightness == Brightness.dark
+                    ? AppTheme.captionStyle
                     : AppTheme.lightCaptionStyle,
                 prefixIcon: Icon(
                   Icons.search,
-                  color: theme.brightness == Brightness.dark 
-                      ? AppTheme.subtextColor 
+                  color: theme.brightness == Brightness.dark
+                      ? AppTheme.subtextColor
                       : AppTheme.lightSubtextColor,
                   size: 18,
                 ),
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.symmetric(vertical: 12),
               ),
-              style: theme.brightness == Brightness.dark 
-                  ? AppTheme.bodyStyle 
+              style: theme.brightness == Brightness.dark
+                  ? AppTheme.bodyStyle
                   : AppTheme.lightBodyStyle,
             ),
           ),
@@ -50,8 +50,8 @@ class SearchBarWidget extends StatelessWidget {
           child: IconButton(
             icon: Icon(
               Icons.tune,
-              color: theme.brightness == Brightness.dark 
-                  ? AppTheme.textColor 
+              color: theme.brightness == Brightness.dark
+                  ? AppTheme.textColor
                   : AppTheme.lightTextColor,
               size: 18,
             ),

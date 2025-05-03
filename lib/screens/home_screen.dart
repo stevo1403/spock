@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:pure_wallet_2/widgets/advertisement_banner.dart';
 import 'dart:async';
 
 import '../providers/wallet_provider.dart';
@@ -8,7 +9,6 @@ import '../providers/advertisement_provider.dart';
 import '../widgets/app_header.dart';
 import '../widgets/search_bar_widget.dart';
 import '../widgets/wallet_connect_button.dart';
-import '../widgets/advertisement_banner.dart';
 import '../widgets/wallet_card.dart';
 import '../widgets/message_list.dart';
 import '../utils/theme.dart';
@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future<void> _handleRefresh() async {
     final walletProvider = context.read<WalletProvider>();
     if (walletProvider.connectedWallet != null) {
-       if (!mounted) return;
+      if (!mounted) return;
       await context.read<MessageProvider>().refreshMessages();
     }
   }
@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
       if (!mounted) return; // Add mounted check here
       messageProvider.loadInitialMessages();
     } finally {
-       if (!mounted) return;
+      if (!mounted) return;
       setState(() {
         _connectingWalletId = null;
       });
@@ -98,46 +98,42 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final walletProvider = context.watch<WalletProvider>();
-    final messageProvider = context.watch<MessageProvider>(); // Watch MessageProvider
+    final messageProvider = context.watch<MessageProvider>();
     final connectedWallet = walletProvider.connectedWallet;
 
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            const AppHeader(),
-            Expanded(
-              child: RefreshIndicator(
-                key: _refreshIndicatorKey,
-                onRefresh: _handleRefresh,
-                color: AppTheme.primaryColor,
-                child: ListView(
-                  padding: const EdgeInsets.all(16),
-                  children: [
-                    const SearchBarWidget(),
-                    const SizedBox(height: 16),
-                    if (connectedWallet != null) ...[
-                      const AdvertisementBanner(),
-                      const SizedBox(height: 16),
-                      WalletCard(
-                        wallet: connectedWallet,
-                        onDisconnect: _handleDisconnect,
-                      ),
-                      const SizedBox(height: 16),
-                      // Pass the messages and callbacks from the provider
-                      MessageList(
-                        messages: messageProvider.messages,
-                        onMarkAsRead: _markMessageAsRead, // Add required callback
-                        onMarkAllRead: _markAllMessagesAsRead, // Add required callback
-                      ),
-                    ] else ...[
-                      _buildConnectWalletSection(),
-                    ],
-                  ],
-                ),
+        child: RefreshIndicator(
+          key: _refreshIndicatorKey,
+          onRefresh: _handleRefresh,
+          color: AppTheme.primaryColor,
+          child: ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              const AppHeader(),
+              Column(
+                children: [
+                  const SearchBarWidget(),
+                  const AdvertisementBanner(),
+                ],
               ),
-            ),
-          ],
+              const SizedBox(height: 16),
+              if (connectedWallet != null) ...[
+                WalletCard(
+                  wallet: connectedWallet,
+                  onDisconnect: _handleDisconnect,
+                ),
+                const SizedBox(height: 16),
+                MessageList(
+                  messages: messageProvider.messages,
+                  onMarkAsRead: _markMessageAsRead,
+                  onMarkAllRead: _markAllMessagesAsRead,
+                ),
+              ] else ...[
+                _buildConnectWalletSection(),
+              ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -165,34 +161,37 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildConnectWalletSection() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const Text(
-          'Connect Wallet',
-          style: AppTheme.headingStyle,
-        ),
-        const SizedBox(height: 8),
-        const Text(
-          'Connect your wallet to access decentralized applications',
-          style: AppTheme.captionStyle,
-        ),
-        const SizedBox(height: 24),
-        ...MockData.getWallets().map((wallet) => Padding(
-              padding: const EdgeInsets.only(bottom: 12),
-              child: WalletConnectButton(
-                wallet: wallet,
-                onConnect: _handleConnect,
-                isConnecting: _connectingWalletId == wallet.id,
-              ),
-            )), // Remove .toList()
-        const SizedBox(height: 16),
-        TextButton.icon(
-          onPressed: () {},
-          icon: const Icon(Icons.refresh, size: 16),
-          label: const Text('Refresh wallets'),
-        ),
-      ],
+    return Padding(
+      padding: const EdgeInsets.only(top: 20.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'Connect Wallet',
+            style: AppTheme.headingStyle,
+          ),
+          const SizedBox(height: 8),
+          const Text(
+            'Connect your wallet to access decentralized applications',
+            style: AppTheme.captionStyle,
+          ),
+          const SizedBox(height: 24),
+          ...MockData.getWallets().map((wallet) => Padding(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: WalletConnectButton(
+                  wallet: wallet,
+                  onConnect: _handleConnect,
+                  isConnecting: _connectingWalletId == wallet.id,
+                ),
+              )),
+          const SizedBox(height: 16),
+          TextButton.icon(
+            onPressed: () {},
+            icon: const Icon(Icons.refresh, size: 16),
+            label: const Text('Refresh wallets'),
+          ),
+        ],
+      ),
     );
   }
 }
