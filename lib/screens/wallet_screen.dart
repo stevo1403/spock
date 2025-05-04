@@ -260,6 +260,7 @@ class _WalletScreenState extends State<WalletScreen> {
       children: [
         const SearchBarWidget(),
         const SizedBox(height: 32),
+        const AdvertisementBanner(),
         Text(
           'Connect Wallet',
           style: theme.textTheme.displayMedium,
