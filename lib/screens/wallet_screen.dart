@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:pure_wallet_2/widgets/advertisement_banner.dart';
 
 import '../providers/wallet_provider.dart';
 import '../providers/message_provider.dart';
@@ -9,7 +10,6 @@ import '../providers/token_provider.dart';
 import '../widgets/app_header.dart';
 import '../widgets/search_bar_widget.dart';
 import '../widgets/wallet_connect_button.dart';
-import '../widgets/advertisement_banner.dart';
 import '../widgets/wallet_card.dart';
 import '../widgets/message_list.dart';
 import '../widgets/token_list.dart';
@@ -188,7 +188,7 @@ class _WalletScreenState extends State<WalletScreen> {
       children: [
         const SearchBarWidget(),
         const SizedBox(height: 16),
-
+        const SizedBox(height: 16),
         const AdvertisementBanner(),
         const SizedBox(height: 16),
 
@@ -261,6 +261,7 @@ class _WalletScreenState extends State<WalletScreen> {
         const SearchBarWidget(),
         const SizedBox(height: 32),
         const AdvertisementBanner(),
+        const SizedBox(height: 32),
         Text(
           'Connect Wallet',
           style: theme.textTheme.displayMedium,

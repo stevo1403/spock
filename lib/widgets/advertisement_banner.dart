@@ -239,7 +239,6 @@ class _AdvertisementBannerState extends State<AdvertisementBanner> {
                   final baseUrl = dotenv.maybeGet('BASE_URL') ?? '';
 
                   final imageUrl = content.imageUrl != null ? '$baseUrl${content.imageUrl}' : content.externalUrl;
-                  
                   return ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Stack(
