@@ -18,6 +18,7 @@ final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await dotenv.load(fileName: ".env");
   // Set preferred orientations
   await SystemChrome.setPreferredOrientations([

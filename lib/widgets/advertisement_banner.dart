@@ -212,20 +212,20 @@ class _AdvertisementBannerState extends State<AdvertisementBanner> {
 
     if (_isLoading) {
       return const SizedBox(
-        height: 250,
+        height: 350,
         child: Center(
           child: CircularProgressIndicator(),
         ),
       );
     }
     return SizedBox(
-      height: 250,
+      height: 350,
       child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: SizedBox(
-              height: 200,
+              height: 300,
               child: PageView.builder(
                 controller: _pageController,
                 padEnds: false,
@@ -235,8 +235,10 @@ class _AdvertisementBannerState extends State<AdvertisementBanner> {
                 },
                 itemBuilder: (context, index) {
                   final content = _contentList[index];
-                  final imageUrl = content.imageUrl ?? content.externalUrl;
+              
+                  final baseUrl = dotenv.maybeGet('BASE_URL') ?? '';
 
+                  final imageUrl = content.imageUrl != null ? '$baseUrl${content.imageUrl}' : content.externalUrl;
                   return ClipRRect(
                     borderRadius: BorderRadius.circular(16),
                     child: Stack(
